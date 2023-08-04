@@ -1,0 +1,31 @@
+Django==4.2
+Pillow==9.5.0
+psycopg2-binary
+elasticsearch-dsl
+celery[redis]
+django-allauth
+django-phonenumber-field==7.0.2
+python-dotenv
+django-ajax-datatable
+django-widget-tweaks
+django-simple-history
+django-dynamic-formsets
+
+# social media platforms
+
+facebook-sdk
+python-instagram
+tweepy
+
+# open ai
+
+openai
+
+# chat bot
+nltk
+
+# Binance Trading Bot
+
+python-binance
+scikit-learn
+numpy

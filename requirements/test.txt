@@ -1,0 +1,10 @@
+-r base.txt
+
+#Authlib==0.15.4  # could not be used with APITestCase's request factory
+factory_boy==3.2.0
+django-silk==4.2.0
+django-debug-toolbar==3.2.4
+coverage
+selenium==4.4.*
+webdriver-manager==3.8.*
+freezegun==1.2.2

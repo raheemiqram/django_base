@@ -1,0 +1,69 @@
+version: '3.7'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/usr/src/app/
+    ports:
+      - 8000:8000
+    environment:
+      - DJANGO_DATABASE_HOST=db
+      - CELERY_BROKER_URL="redis://redis:6379"
+      - CELERY_RESULT_BACKEND="redis://redis:6379"
+
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:14.0-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=django_base
+      - POSTGRES_PASSWORD=django_base
+      - POSTGRES_DB=django_base
+
+  redis:
+    image: redis:alpine
+
+    ports:
+      - 6379:6379
+
+  celery:
+    build: .
+    command: celery -A django_base worker -B -l info
+    volumes:
+      - .:/usr/src/app/
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=dbaa1_i7%*3r9-=z-+_mz4r-!qeed@(-a_r(g@k8jo8y3r27%m
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+      - CELERY_BROKER=redis://redis:6379/0
+      - CELERY_BACKEND=redis://redis:6379/0
+
+    depends_on:
+      - redis
+      - db
+      - celery-beat
+
+
+  celery-beat:
+    build: .
+    command: celery -A django_base beat -l info
+    volumes:
+      - .:/usr/src/app/
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=dbaa1_i7%*3r9-=z-+_mz4r-!qeed@(-a_r(g@k8jo8y3r27%m
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+    depends_on:
+      - redis
+      - db
+
+
+
+volumes:
+  postgres_data:
