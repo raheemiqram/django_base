@@ -1,0 +1,53 @@
+{% load form_tags %}
+{% load i18n %}
+{% load widget_tweaks %}
+
+{% annotate_form_field field %}
+
+<div class="control-group {% if field.errors %}error{% endif %} control-input">
+  {% if not nolabel %}
+  <label class="control-label {% if field.field.required %}required{% endif %}" for="{{ field.id_for_label }}">{{ field.label }}</label>
+  {% endif %}
+  <div class="controls">
+    <div class="custom_file_input">
+      <div class="upload-image">
+        <div class="sortable-handle">
+          <div class="image-input override">
+            <label for="{{ field.auto_id }}" class="input_image">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" viewBox="0 0 40 30">
+                <path id="iconmonstr-upload-17"
+                      d="M26.667,24.667h-5V33H18.333V24.667h-5L20,18Zm5.8-9.847a12.483,12.483,0,0,0-24.93,0A9.163,9.163,0,0,0,9.167,33H15V29.667H9.167a5.84,5.84,0,0,1-5.833-5.833c0-4.662,4.132-6.388,7.388-6.2C10.443,10.6,14.4,6.333,20,6.333c5.755,0,9.818,4.662,9.278,11.3,2.908-.077,7.388,1.252,7.388,6.2a5.84,5.84,0,0,1-5.833,5.833H25V33h5.833a9.163,9.163,0,0,0,1.632-18.18Z"
+                      transform="translate(0 -3)" fill="#3CD17F"/>
+              </svg>
+              <span>{% trans "Upload File" %}</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      {% if field.help_text %}
+        <small class="form-text text-muted">
+            {# We allow HTML within form help fields #}
+            {{ field.help_text|safe }}
+        </small>
+      {% endif %}
+      <div class="custom_file_name">
+        <span class="file-chosen-text"></span>
+        <span class="remove_file" data-target="{{ field.auto_id }}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="9.849" height="9.849" viewBox="0 0 9.849 9.849">
+             <g id="Group_20526" data-name="Group 20526" transform="translate(-1326.576 -277.576)">
+                <line id="Line_3754" data-name="Line 3754" x1="9" y1="9" transform="translate(1327 278)"
+                      fill="none" stroke="#d7d7da" stroke-width="1.2"></line>
+                <line id="Line_3755" data-name="Line 3755" x1="9" y2="9" transform="translate(1327 278)"
+                      fill="none" stroke="#d7d7da" stroke-width="1.2"></line>
+             </g>
+          </svg>
+       </span>
+      </div>
+    </div>
+    {{ custom|default:field }}
+    
+  </div>
+  {% for error in field.errors %}
+      <span class="error-block"><i class="fas fa-exclamation"></i> {{ error }}</span>
+  {% endfor %}
+</div>

@@ -1,0 +1,22 @@
+{% load i18n %}
+
+
+
+
+<form {% if form_id %}id="{{ form_id }}"{% endif %} novalidate class="form-{{ style|default:"stacked" }} {{ class }} fixed-actions" method="{{ method|default:"post" }}"
+    {% if action %}action="{{ action }}"{% endif %}
+    {% if includes_files %}enctype="multipart/form-data"{% endif %}>
+
+    {% if not method == "get" %}{% csrf_token %}{% endif %}
+    {% include 'dashboard/partials/form_fields.html' %}
+    <div class="fixed-actions-group">
+        <div class="form-group">
+            <div class="left">
+                <a class="btn btn-cancel" {% if cancel_link %}href="{{ cancel_link }}"{% else %}href="#" onclick="window.history.go(-1);return false"{% endif %}>{% trans "cancel" %}</a>
+            </div>
+            <div class="right">
+                <button class="btn btn-primary" type="submit" data-loading-text="{% trans 'Saving...' %}">{% trans "Save" %}</button>
+            </div>
+        </div>
+    </div>
+</form>

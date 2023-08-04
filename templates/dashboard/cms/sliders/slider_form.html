@@ -1,0 +1,44 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block dashboard_content %}
+    <div class="content-wrapper">
+
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item">Slider</li>
+                            <li class="breadcrumb-item active">Create</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="card p-2">
+                    <h1>Create Slider</h1>
+                    <form method="post">
+                        {% csrf_token %}
+                        {% include 'dashboard/partials/form_fields.html' with form=form %}
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block extra_scripts %}
+{% endblock %}
