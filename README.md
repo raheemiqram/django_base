@@ -1,8 +1,8 @@
-# Djang_base
+# Django_base
 
 ## Introduction
 
-Welcome to Djang_base, a comprehensive Django project template designed to streamline the development of web applications. This project template comes equipped with all the essential components and libraries necessary to kickstart your development process. It also includes several important libraries, such as:
+Welcome to Django_base, a comprehensive Django project template designed to streamline the development of web applications. This project template comes equipped with all the essential components and libraries necessary to kickstart your development process. It also includes several important libraries, such as:
 
 - django-ajax-datatable: Simplifies server-side processing and rendering of data tables with AJAX support.
 - django-widget-tweaks: Allows easy customization of Django form widgets in templates.
@@ -15,7 +15,7 @@ Welcome to Djang_base, a comprehensive Django project template designed to strea
 - python-instagram: Facilitates communication with the Instagram API for various Instagram-related functionalities.
 - tweepy: A Python library for easy interaction with the Twitter API.
 
-Additionally, Djang_base features pre-built modules that you can customize and extend based on your specific project requirements:
+Additionally, Django_base features pre-built modules that you can customize and extend based on your specific project requirements:
 
 - Authentication (auth): Handles user authentication, login, registration, and password management with a secure user authentication system.
 - Catalog: Manages product listings, categories, and related information for e-commerce and inventory-based applications.
@@ -24,7 +24,7 @@ Additionally, Djang_base features pre-built modules that you can customize and e
 
 ## Getting Started
 
-To begin using Djang_base, follow these steps:
+To begin using Django_base, follow these steps:
 
 1. Clone the repository to your local development environment.
 
@@ -50,8 +50,8 @@ To begin using Djang_base, follow these steps:
 
 ## Contribution
 
-We welcome contributions to Djang_base that enhance its functionality, fix bugs, or improve the documentation. Please feel free to submit pull requests or open issues for discussion.
+We welcome contributions to Django_base that enhance its functionality, fix bugs, or improve the documentation. Please feel free to submit pull requests or open issues for discussion.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details. Happy coding with Djang_base! If you have any questions or need further assistance, don't hesitate to reach out.
+This project is licensed under the MIT License. See the [LICENSE.md](LICENSE.md) file for details. Happy coding with Django_base! If you have any questions or need further assistance, don't hesitate to reach out.
