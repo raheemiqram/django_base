@@ -23,9 +23,3 @@ openai
 
 # chat bot
 nltk
-
-# Binance Trading Bot
-
-python-binance
-scikit-learn
-numpy
