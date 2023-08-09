@@ -24,14 +24,35 @@ class TemplateAjaxDatatableView(AjaxDatatableView):
     # {'name': 'app_label', 'foreign_field': 'content_type__app_label', 'visible': True, },
 
     def customize_row(self, row, obj):
+
         row['actions'] = """
             <a href="/dashboard/empty/" class="btn btn-info">
                Edit
             </a>
-            <a href="/dashboard/empty/" class="btn btn-danger">
+            <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#modal-default_{pk}">
                Delete
             </a>
-        """
+            
+            <div class="modal fade" id="modal-default_{pk}" style="display: none;" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-header">
+                <h4 class="modal-title">Default Modal</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                <p>One fine body…</p>
+                </div>
+                <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </div>
+                </div>
+            </div>
+        """.format(pk=obj.id)
 
     # def render_row_details(self, pk, request=None):
     #     detail = self.model.objects.get(pk=pk)
