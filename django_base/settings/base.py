@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'apps.chat_bot',
     'apps.marketing',
     'apps.messaging',
-    'apps.trading_bot',
     'dynamic_formsets',
 ]
 

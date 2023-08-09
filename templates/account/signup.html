@@ -14,7 +14,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="../../index2.html"><b>{{ SITE_NAME }}</b><br/>AR</a>
+        <a href="../../index2.html"><b>AR</b><br/>DASHBOARD</a>
     </div>
 
     <div class="card">
@@ -23,50 +23,77 @@
             <p class="login-box-msg">Sign up to start your session</p>
             <form action="{% url 'account_signup' %}" method="post">
                 {% csrf_token %}
-                <div class="input-group mb-3">
-                    <input type="text" name="first_name" class="form-control" placeholder="Firstname">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-text-height"></span>
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger form-group">
+                            <span class="error-block"><i class="fas fa-exclamation"></i> {{ error }}</span>
                         </div>
-                    </div>
+                    {% endfor %}
+                {% endif %}
+                <div class="form-group">
+                    <label for="exampleInputEmail1">First Name</label>
+                    <input type="text" name="first_name"
+                           class="form-control {% if form.first_name.errors %}is-invalid {% endif %}"
+                           id="exampleInputEmail1"
+                           placeholder="Enter first name" aria-describedby="exampleInputEmail1-error"
+                           aria-invalid="true">
+                    {% for error in form.first_name.errors %}
+                        <span id="exampleInputEmail1-error"
+                              class="error invalid-feedback">{{ error }}</span>
+                    {% endfor %}
                 </div>
-                <div class="input-group mb-3">
-                    <input type="text" name="last_name" class="form-control" placeholder="Lastname">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-text-height"></span>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Last Name</label>
+                    <input type="text" name="last_name"
+                           class="form-control {% if form.last_name.errors %}is-invalid {% endif %}"
+                           id="exampleInputEmail1"
+                           placeholder="Enter last name" aria-describedby="exampleInputEmail1-error"
+                           aria-invalid="true">
+                    {% for error in form.last_name.errors %}
+                        <span id="exampleInputEmail1-error"
+                              class="error invalid-feedback">{{ error }}</span>
+                    {% endfor %}
                 </div>
 
-                <div class="input-group mb-3">
-                    <input type="email" name="email" class="form-control" placeholder="Email">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email</label>
+                    <input type="email" name="email"
+                           class="form-control {% if form.email.errors %}is-invalid {% endif %}"
+                           id="exampleInputEmail1"
+                           placeholder="Enter email" aria-describedby="exampleInputEmail1-error"
+                           aria-invalid="true">
+                    {% for error in form.email.errors %}
+                        <span id="exampleInputEmail1-error"
+                              class="error invalid-feedback">{{ error }}</span>
+                    {% endfor %}
                 </div>
-                <div class="input-group mb-3">
-                    <input type="password" name="password1" class="form-control" placeholder="Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Password</label>
+                    <input type="password" name="password1"
+                           class="form-control {% if form.password1.errors %}is-invalid {% endif %}"
+                           id="exampleInputEmail1"
+                           placeholder="Enter password" aria-describedby="exampleInputEmail1-error"
+                           aria-invalid="true">
+                    {% for error in form.password1.errors %}
+                        <span id="exampleInputEmail1-error"
+                              class="error invalid-feedback">{{ error }}</span>
+                    {% endfor %}
                 </div>
-                <div class="input-group mb-3">
-                    <input type="password" name="password2" class="form-control" placeholder="Confirm Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
+                                <div class="form-group">
+                    <label for="exampleInputEmail1">Password</label>
+                    <input type="password" name="password2"
+                           class="form-control {% if form.password2.errors %}is-invalid {% endif %}"
+                           id="exampleInputEmail1"
+                           placeholder="Confirm password" aria-describedby="exampleInputEmail1-error"
+                           aria-invalid="true">
+                    {% for error in form.password2.errors %}
+                        <span id="exampleInputEmail1-error"
+                              class="error invalid-feedback">{{ error }}</span>
+                    {% endfor %}
                 </div>
                 <div class="row">
                     <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                        <button type="submit" class="btn btn-success btn-block float-right">Sign In</button>
                     </div>
 
                 </div>

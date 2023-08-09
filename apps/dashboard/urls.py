@@ -18,7 +18,6 @@ urlpatterns = [
     path('configuration/', include('apps.core.urls')),
     path('messaging/', include('apps.messaging.urls')),
     path('marketing/', include('apps.marketing.urls')),
-    path('trading/', include('apps.trading_bot.urls')),
     # ...
 
     # LOGIN

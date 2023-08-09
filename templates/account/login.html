@@ -14,46 +14,43 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="../../index2.html"><b>{{ SITE_NAME }}</b><br/>AR</a>
+        <a href="../../index2.html"><b>AR</b><br/>DASHBOARD</a>
     </div>
 
     <div class="card">
         <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
-            {{ form.errors }}
-            <form action="" method="post" action="{% url 'account_login' %}">
-                {% csrf_token %}
-                <div class="input-group mb-3">
-                    <input type="email" name="login" class="form-control" placeholder="Email">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
+            <form method="post" action="{% url 'account_login' %}" novalidate>
+                {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                        <div class="alert alert-danger form-group">
+                            <span class="error-block"><i class="fas fa-exclamation"></i> {{ error }}</span>
                         </div>
+                    {% endfor %}
+                {% endif %}
+            {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" name="login" class="form-control {% if form.login.errors %}is-invalid {% endif %}" id="exampleInputEmail1"
+                               placeholder="Enter email" aria-describedby="exampleInputEmail1-error"
+                               aria-invalid="true">
+                        {% for error in form.login.errors %}
+                        <span id="exampleInputEmail1-error"
+                              class="error invalid-feedback">{{ error }}</span>
+                        {% endfor %}
                     </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" name="password" class="form-control" placeholder="Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-8">
-                        <div class="icheck-primary">
-                            <input type="checkbox" name="remember" id="id_remember">
-                            <label for="remember">
-                                Remember Me
-                            </label>
-                        </div>
-                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" name="password" class="form-control {% if form.password.errors %}is-invalid {% endif %}"
+                               id="exampleInputPassword1" placeholder="Password"
+                               aria-describedby="exampleInputPassword1-error">
+                        {% for error in form.password.errors %}
+                        <span id="exampleInputPassword1-error"
+                              class="error invalid-feedback">{{ error }}</span></div>{% endfor %}
 
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
-                    </div>
 
-                </div>
+                <button type="submit" class="btn btn-success float-right mt-2">Submit</button>
+
             </form>
             {#            <p class="mb-1">#}
             {#                <a href="forgot-password.html">I forgot my password</a>#}
