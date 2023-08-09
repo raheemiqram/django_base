@@ -35,7 +35,7 @@ class BaseModel(models.Model):
         abstract = True
 
 
-class Configuration(BaseModel, CachedQuerySetMixin):
+class Configuration(BaseModel):
     # OpenAI configuration
     openai_api_key = models.CharField(max_length=100)
 

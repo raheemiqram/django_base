@@ -18,7 +18,6 @@ class ConfigurationView(TemplateView):
         config = Configuration.objects.first()
         ctx['configuration'] = config
         config = Configuration()
-        ctx['configuration_cache'] = config.cached_queryset
         fields = {}
         for field in config._meta.fields:
             if field.name not in ['id']:

@@ -37,13 +37,17 @@
                         {% elif field.widget_type == 'radioselect' %}
                             {% render_field field class+="form-check-input position-static controls mt-2" %}
                         {% else %}
-                            {% render_field field class+="form-control" %}
+                            {% if field.errors %}
+                                {% render_field field class+="form-control is-invalid" %}
+                            {% else %}
+                                {% render_field field class+="form-control" %}
+                            {% endif %}
                         {% endif %}
                     {% endblock %}
 
                     {% block errors %}
                         {% for error in field.errors %}
-                            <span class="error-block"><i class="fas fa-exclamation"></i> {{ error }}</span>
+                            <span class="error invalid-feedback" style="display: block"><i class="fas fa-exclamation"></i> {{ error }}</span>
                         {% endfor %}
                     {% endblock %}
 

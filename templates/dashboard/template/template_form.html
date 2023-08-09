@@ -27,7 +27,7 @@
             <div class="container-fluid">
                 <div class="card p-2">
                     <h1>Create Template</h1>
-                    <form method="post">
+                    <form method="post" novalidate>
                         {% csrf_token %}
                         {% include 'dashboard/partials/form_fields.html' with form=form %}
 
